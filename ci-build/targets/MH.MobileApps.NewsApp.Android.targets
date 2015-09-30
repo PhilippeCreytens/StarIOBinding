@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="ProcessMultiBrandProject" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Target Name="ProcessMultiBrandProject">
+
+		<MHManifestTask
+			Element="manifest"
+			Key="package"
+			Value="$(BundleId)"
+			Path="$(MSBuildProjectDirectory)/Properties" >
+		</MHManifestTask>
+
+		<MHManifestTask
+			Element="application"
+			Key="android:label"
+			Value="$(BrandFullName)"
+			Path="$(MSBuildProjectDirectory)/Properties" >
+		</MHManifestTask>
+
+		<MHMultiBrandCopyTask
+			SourcePath="$(MSBuildProjectDirectory)\Assets-Source"
+			TargetPath="$(MSBuildProjectDirectory)\Assets"
+			Brand="$(Brand)"
+			ReleaseMode="$(ReleaseMode)" >
+		</MHMultiBrandCopyTask>
+
+		<MHMultiBrandCopyTask
+			SourcePath="$(MSBuildProjectDirectory)\Resources-Source"
+			TargetPath="$(MSBuildProjectDirectory)\Resources"
+			Brand="$(Brand)"
+			ReleaseMode="$(ReleaseMode)" >
+		</MHMultiBrandCopyTask>
+
+	</Target>
+
+</Project>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<UsingTask TaskName="MH.MobileApps.MSBuild.MHBrandTask" AssemblyFile="..\libs\MH.MobileApps.MSBuild.dll" />
+	<UsingTask TaskName="MH.MobileApps.MSBuild.MHBuildModeTask" AssemblyFile="..\libs\MH.MobileApps.MSBuild.dll" />
+	<UsingTask TaskName="MH.MobileApps.MSBuild.MHBundleIdentifierTask" AssemblyFile="..\libs\MH.MobileApps.MSBuild.dll" />
+	<UsingTask TaskName="MH.MobileApps.MSBuild.MHPlistTask" AssemblyFile="..\libs\MH.MobileApps.MSBuild.dll" />
+	<UsingTask TaskName="MH.MobileApps.MSBuild.MHManifestTask" AssemblyFile="..\libs\MH.MobileApps.MSBuild.dll" />
+	<UsingTask TaskName="MH.MobileApps.MSBuild.MHMultiBrandCopyTask" AssemblyFile="..\libs\MH.MobileApps.MSBuild.dll" />
+	<UsingTask TaskName="MH.MobileApps.MSBuild.MHReadSettingsForPlistTask" AssemblyFile="..\libs\MH.MobileApps.MSBuild.dll" />
+</Project>

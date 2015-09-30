@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="ConfigureMultiBrandProject" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Import Project="MH.MobileApps.MSBuild.targets" />
+
+	<PropertyGroup>
+		<BuildDependsOn>
+			ProcessMultiConfigurationProject;
+			$(BuildDependsOn)
+		</BuildDependsOn>
+	</PropertyGroup>
+
+	<Target Name="ProcessMultiConfigurationProject">
+
+		<MHBrandTask
+			BuildConfiguration="$(Configuration)"
+			BrandNames="GVA;De Gazet Van Antwerpen|NBO;Het Nieuwsblad|HBVL;Het Belang Van Limburg|DSO;dS Nieuws" >
+
+			<Output TaskParameter="Brand" PropertyName="Brand" />
+			<Output TaskParameter="FullName" PropertyName="BrandFullName" />
+		</MHBrandTask>
+
+		<MHBuildModeTask
+			BuildConfiguration="$(Configuration)" >
+
+			<Output TaskParameter="BuildMode" PropertyName="BuildMode" />
+			<Output TaskParameter="ReleaseMode" PropertyName="ReleaseMode" />
+		</MHBuildModeTask>
+
+		<MHMultiBrandCopyTask
+			SourcePath="$(MSBuildProjectDirectory)\Configs-Source"
+			TargetPath="$(MSBuildProjectDirectory)\Configs"
+			Brand="$(Brand)"
+			ReleaseMode="$(ReleaseMode)" >
+		</MHMultiBrandCopyTask>
+
+	</Target>
+
+</Project>

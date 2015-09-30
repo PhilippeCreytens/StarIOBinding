@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="ConfigureMultiBrandProject" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Import Project="MH.MobileApps.MSBuild.targets" />
+
+	<PropertyGroup>
+		<BuildDependsOn>
+			ConfigureMultiBrandProject;
+			ProcessMultiBrandProject;
+			$(BuildDependsOn)
+		</BuildDependsOn>
+	</PropertyGroup>
+
+	<Target Name="ConfigureMultiBrandProject">
+
+		<MHBrandTask 
+			BuildConfiguration="$(Configuration)" 
+			BrandNames="GVA;De Gazet Van Antwerpen|NBO;Het Nieuwsblad|HBVL;Het Belang Van Limburg|DSO;dS Nieuws" >
+			
+			<Output TaskParameter="Brand" PropertyName="Brand" />
+			<Output TaskParameter="FullName" PropertyName="BrandFullName" />
+		</MHBrandTask>
+
+		<MHBuildModeTask 
+			BuildConfiguration="$(Configuration)" >
+			
+			<Output TaskParameter="BuildMode" PropertyName="BuildMode" />
+			<Output TaskParameter="ReleaseMode" PropertyName="ReleaseMode" />
+		</MHBuildModeTask>
+
+		<MHBundleIdentifierTask
+			BaseBundleId="com.mediahuis.mobileapps.paperapp"
+			Brand="$(Brand)"
+			ReleaseMode="$(ReleaseMode)">
+
+			<Output TaskParameter="BundleId" PropertyName="BundleId" />
+		</MHBundleIdentifierTask>
+
+	</Target>
+
+</Project>

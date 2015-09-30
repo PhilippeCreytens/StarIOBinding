@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="ProcessMultiBrandProject" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Target Name="ProcessMultiBrandProject">
+
+		<MHPlistTask
+			Key="CFBundleIdentifier"
+			Value="$(BundleId)"
+			Path="$(MSBuildProjectDirectory)" >
+		</MHPlistTask>
+		
+		<MHPlistTask
+			Key="CFBundleDisplayName"
+			Value="$(BrandFullName)"
+			Path="$(MSBuildProjectDirectory)" >
+		</MHPlistTask>
+
+		<MHMultiBrandCopyTask
+			SourcePath="$(MSBuildProjectDirectory)\Resources-Source"
+			TargetPath="$(MSBuildProjectDirectory)\Resources"
+			Brand="$(Brand)"
+			ReleaseMode="$(ReleaseMode)" >
+		</MHMultiBrandCopyTask>
+
+	</Target>
+
+</Project>
